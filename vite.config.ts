@@ -7,14 +7,5 @@ export default defineConfig({
   plugins: [react()],
   build: {
     target: 'es2020',
-    rollupOptions: {
-      output: {
-        // Three.js/R3F вынесены в отдельный чанк — грузится лениво вместе со сценой,
-        // не висит в основном бандле (важно для perf и мобайл-fallback).
-        manualChunks: {
-          three: ['three', '@react-three/fiber', '@react-three/drei'],
-        },
-      },
-    },
   },
 })
