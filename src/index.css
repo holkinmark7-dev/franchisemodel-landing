@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Палитра navy (из дизайн-спеки арт-директора) */
+  --navy: #06091a;
+  --navy-2: #0b1024;
+  --glass: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --text: #eaf0ff;
+  --text-mute: rgba(234, 240, 255, 0.55);
+  --accent: #7ca8ff;
+  --accent-2: #8b7cff;
+  --accent-glow: rgba(124, 168, 255, 0.18);
+
+  /* Тайп-скейл */
+  --h1: clamp(2.5rem, 8vw + 1rem, 7rem);
+  --h2: clamp(1.75rem, 4vw, 3.25rem);
+  --body: clamp(1rem, 1.2vw, 1.25rem);
+  --mono: clamp(0.75rem, 0.9vw, 0.9rem);
+
+  /* Easing-словарь (2 кривые на 90% моушна) */
+  --ease-enter: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-ui: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-cinema: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: auto;
+    background: var(--navy);
+  }
+  body {
+    margin: 0;
+    background: var(--navy);
+    color: var(--text);
+    font-family: 'Manrope Variable', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+  ::selection {
+    background: rgba(124, 168, 255, 0.25);
+  }
+}
+
+@layer components {
+  .h1-cinema {
+    font-size: var(--h1);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    font-weight: 700;
+  }
+  .mono-label {
+    font-family: 'JetBrains Mono Variable', ui-monospace, monospace;
+    font-size: var(--mono);
+    line-height: 1;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+  }
+  .text-gradient {
+    background: linear-gradient(120deg, #7ca8ff 0%, #c9d8ff 60%, #8b7cff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .glass {
+    background: var(--glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.06),
+      0 24px 56px -20px rgba(0, 0, 0, 0.6);
+  }
+  .cta-glass {
+    background: rgba(124, 168, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(124, 168, 255, 0.28);
+    border-radius: 9999px;
+    transition: transform 180ms var(--ease-ui), background 180ms var(--ease-ui);
+  }
+  .cta-glass:hover {
+    transform: scale(1.02);
+    background: rgba(124, 168, 255, 0.14);
+  }
+  .cta-glass:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Ambient орбы */
+.orb {
+  position: absolute;
+  width: 50vw;
+  height: 50vw;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  will-change: transform;
+  animation: drift 24s ease-in-out infinite alternate;
+}
+.orb-a {
+  background: radial-gradient(circle, var(--accent-glow), transparent 70%);
+}
+.orb-b {
+  background: radial-gradient(circle, rgba(139, 124, 255, 0.16), transparent 70%);
+}
+@keyframes drift {
+  to {
+    transform: translate(8%, -6%) scale(1.08);
+  }
+}
+
+/* Grain overlay */
+.grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.04;
+  mix-blend-mode: soft-light;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orb {
+    animation: none;
+  }
+}
