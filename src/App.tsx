@@ -12,10 +12,27 @@ function Grain() {
   )
 }
 
+function TopBar() {
+  return (
+    <header className="fixed inset-x-0 top-0 z-[60] flex items-center justify-between px-5 py-3.5 sm:px-8">
+      <span className="text-[15px] font-bold tracking-[-0.02em] text-[var(--text)]">
+        closr<span className="text-[var(--accent)]">.</span>
+      </span>
+      <a
+        href="#cta"
+        className="cta-glass inline-flex items-center px-4 py-2 text-[12.5px] font-semibold text-[var(--text)]"
+      >
+        Демо
+      </a>
+    </header>
+  )
+}
+
 export default function App() {
   return (
     <div className="relative min-h-screen bg-[var(--navy)]">
       <Grain />
+      <TopBar />
       <Hero />
 
       {/* Этап 1: только hero. Блоки 2–4 (Демо · Цена+Допы · FAQ+форма) — следующий деплой. */}

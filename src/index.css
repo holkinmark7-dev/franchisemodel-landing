@@ -92,6 +92,48 @@
   .cta-glass:active {
     transform: scale(0.98);
   }
+  .h1-hero {
+    font-family: 'Manrope Variable', system-ui, sans-serif;
+    font-weight: 700;
+    font-size: clamp(2rem, 5.2vw, 4.25rem);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    max-width: 20ch;
+    text-wrap: balance;
+  }
+}
+
+/* Виньетка по краям кадра */
+.vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+  background: radial-gradient(125% 95% at 50% 44%, transparent 52%, rgba(2, 4, 12, 0.6) 100%);
+}
+
+/* Scroll-cue — тонкая линия с дыханием */
+.scroll-cue {
+  display: block;
+  width: 1px;
+  height: 34px;
+  background: linear-gradient(to bottom, var(--text-mute), transparent);
+  transform-origin: top center;
+  animation: cue 2.2s var(--ease-ui) infinite;
+}
+@keyframes cue {
+  0% {
+    opacity: 0.2;
+    transform: scaleY(0.5);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scaleY(1);
+  }
+  100% {
+    opacity: 0.2;
+    transform: scaleY(0.5);
+  }
 }
 
 /* Ambient орбы */
@@ -106,10 +148,14 @@
   animation: drift 24s ease-in-out infinite alternate;
 }
 .orb-a {
-  background: radial-gradient(circle, var(--accent-glow), transparent 70%);
+  width: 55vw;
+  height: 55vw;
+  background: radial-gradient(circle, rgba(124, 168, 255, 0.24), transparent 70%);
 }
 .orb-b {
-  background: radial-gradient(circle, rgba(139, 124, 255, 0.16), transparent 70%);
+  width: 52vw;
+  height: 52vw;
+  background: radial-gradient(circle, rgba(139, 124, 255, 0.2), transparent 70%);
 }
 @keyframes drift {
   to {
@@ -128,7 +174,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .orb {
+  .orb,
+  .scroll-cue {
     animation: none;
   }
 }
