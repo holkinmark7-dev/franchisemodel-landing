@@ -1,4 +1,4 @@
-# Graph Report - franchisemodel-landing  (2026-06-28)
+# Graph Report - franchisemodel-landing  (2026-06-29)
 
 ## Corpus Check
 - 9 files · ~5,274 words
@@ -8,11 +8,6 @@
 - 22 nodes · 24 edges · 7 communities
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
-
-## Graph Freshness
-- Built from commit: `88afe1b1`
-- Run `git rev-parse HEAD` and compare to check if the graph is stale.
-- Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - [[_COMMUNITY_Community 0|Community 0]]
