@@ -1,4 +1,4 @@
-# Graph Report - franchisemodel-landing  (2026-09-01)
+# Graph Report - franchisemodel-landing  (2026-09-02)
 
 ## Corpus Check
 - 9 files · ~5,274 words
